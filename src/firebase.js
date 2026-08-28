@@ -19,4 +19,8 @@ const app = initializeApp(firebaseConfig)
 
 export const auth = getAuth(app)
 export const db = getFirestore(app)
+enableIndexedDbPersistence(db)
+  .then(() => console.log('🔥 Offline cache enabled! Refreshes are now free.'))
+  .catch((err) => console.log('⚠️ Persistence error (ignore if multiple tabs open):', err));
+
 export default app
