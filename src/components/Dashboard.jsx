@@ -32,9 +32,6 @@ export default function Dashboard() {
   const [deleteTarget, setDeleteTarget] = useState(null)
 
   useEffect(() => {
-    // Ordered by book only (single-field index, created automatically);
-    // receipt number is sorted client-side to avoid requiring a manual
-    // composite index in Firestore.
     const q = query(collection(db, COLLECTION), orderBy('bookNo'))
     const unsub = onSnapshot(
       q,
@@ -108,9 +105,21 @@ export default function Dashboard() {
     setDeleteTarget(null)
   }
 
+  // 👇 NEW: Print Two-Column function (respects current filters)
+  const handlePrintTwoCol = () => {
+    document.body.classList.add('printing-two-col')
+    window.print()
+    setTimeout(() => {
+      document.body.classList.remove('printing-two-col')
+    }, 1000)
+  }
+
   return (
     <div className="flex flex-col md:flex-row">
-      <Sidebar />
+      {/* Hide Sidebar during print */}
+      <div className="print-hide">
+        <Sidebar />
+      </div>
 
       <main className="flex-1 px-5 md:px-8 py-8 max-w-6xl mx-auto w-full">
         <header className="mb-6">
@@ -133,6 +142,7 @@ export default function Dashboard() {
           <StatCard label="Books in use" value={stats.books} tone="brass" />
         </div>
 
+        {/* 👇 Pass onPrint to Filters */}
         <Filters
           filters={filters}
           setFilters={setFilters}
@@ -144,6 +154,7 @@ export default function Dashboard() {
             setModalOpen(true)
           }}
           onExport={() => exportToCsv(filtered)}
+          onPrint={handlePrintTwoCol} // 👈 NEW PROP
         />
 
         {loading ? (
@@ -182,6 +193,45 @@ export default function Dashboard() {
           onCancel={() => setDeleteTarget(null)}
         />
       )}
+
+      {/* ─── TWO-COLUMN PRINT CONTAINER (Hidden on screen) ─── */}
+      <div className="two-col-print-container">
+        {filtered.length === 0 ? (
+          <p style={{ textAlign: 'center', padding: '40px', fontFamily: 'Arial, sans-serif' }}>
+            No subscribers match the current filters.
+          </p>
+        ) : (
+          <div className="two-col-grid">
+            {(() => {
+              const rows = []
+              for (let i = 0; i < filtered.length; i += 2) {
+                rows.push(filtered.slice(i, i + 2))
+              }
+              return rows.map((row, rowIndex) => (
+                <div key={rowIndex} className="two-col-row">
+                  {row.map((sub, colIndex) => (
+                    <div key={`${rowIndex}-${colIndex}`} className="two-col-box">
+                      <div className="two-col-name">{sub.name}</div>
+                      <div className="two-col-address">
+                        {sub.address ? sub.address.split(',').map((line, i) => (
+                          <span key={i}>
+                            {line.trim()}
+                            {i < sub.address.split(',').length - 1 && <br />}
+                          </span>
+                        )) : 'No address provided'}
+                      </div>
+                      <div className="two-col-phone">📞 {sub.phone}</div>
+                    </div>
+                  ))}
+                  {row.length === 1 && (
+                    <div className="two-col-box two-col-empty"></div>
+                  )}
+                </div>
+              ))
+            })()}
+          </div>
+        )}
+      </div>
     </div>
   )
 }

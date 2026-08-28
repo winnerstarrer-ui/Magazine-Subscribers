@@ -7,6 +7,7 @@ export default function Filters({
   yearOptions,
   onAddNew,
   onExport,
+  onPrint,      // 👈 NEW: print function
   resultCount,
 }) {
   function update(key, value) {
@@ -97,6 +98,15 @@ export default function Filters({
         )}
 
         <div className="flex-1" />
+
+        {/* 👇 NEW: Print Two-Column button */}
+        <button
+          onClick={onPrint}
+          className="px-4 py-2 text-sm rounded border border-line bg-white hover:bg-ink-900/5 transition-colors flex items-center gap-1"
+          style={{ borderColor: '#8B5CF6', color: '#8B5CF6' }}
+        >
+          <i className="fas fa-columns"></i> Print (2‑col)
+        </button>
 
         <button
           onClick={onExport}
