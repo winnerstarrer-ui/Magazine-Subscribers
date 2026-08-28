@@ -84,26 +84,12 @@ body.printing-two-col .two-col-print-container {
 }
 
 @media print {
-  .print-hide {
-    display: none !important;
-  }
-}
-
-@media print {
-  body.printing-two-col .two-col-print-container {
-    display: block !important;
-  }
-
-  body.printing-two-col .stat-card,
-  body.printing-two-col .card,
-  body.printing-two-col .flex-col.sm\:flex-row,
-  body.printing-two-col .filter-section,
-  body.printing-two-col .btn-primary,
-  body.printing-two-col .btn-outline,
-  body.printing-two-col .print-hide {
+  /* Hide everything inside the main flex container EXCEPT the print container */
+  body.printing-two-col .flex > *:not(.two-col-print-container) {
     display: none !important;
   }
 
+  /* Show only the print container */
   body.printing-two-col .two-col-print-container {
     display: block !important;
     margin: 0 !important;
