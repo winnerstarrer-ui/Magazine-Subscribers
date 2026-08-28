@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-paper text-ink-900 font-body antialiased;
+  background-image: radial-gradient(circle at 1px 1px, rgba(28,43,58,0.05) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+/* Receipt stub — the signature element: two-part ticket stub with a
+   perforated centre, echoing the physical book-of-50-receipts the
+   magazine's subscription records are drawn from. */
+.stub {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid theme('colors.line');
+  background: theme('colors.paper.card');
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 1px 0 rgba(28,43,58,0.04);
+}
+
+.stub__half {
+  padding: 3px 9px;
+  font-family: theme('fontFamily.mono');
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.stub__half--book {
+  color: theme('colors.ink.700');
+  background: rgba(28,43,58,0.03);
+}
+
+.stub__half--receipt {
+  color: theme('colors.brass.dark');
+  font-weight: 600;
+}
+
+.stub__perf {
+  position: relative;
+  width: 0;
+  border-left: 1px dashed theme('colors.line');
+}
+
+/* Ink-stamp shaped stat badge */
+.stamp {
+  position: relative;
+  border: 1.5px solid currentColor;
+  border-radius: 9999px;
+  outline: 1.5px solid currentColor;
+  outline-offset: 3px;
+}
+
+.hairline {
+  border-color: theme('colors.line');
+}
+
+::selection {
+  background: theme('colors.brass.light');
+  color: theme('colors.ink.900');
+}
+
+@media print {
+  .no-print { display: none !important; }
+}
