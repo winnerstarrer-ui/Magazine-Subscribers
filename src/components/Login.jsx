@@ -138,7 +138,7 @@ export default function Login() {
                   </p>
 
                   <p className="mx-auto mt-4 max-w-xs text-xs leading-5 text-white/60">
-                    A calm, private workspace for managing your magazine subscriptions and editorial records.
+                    SUBSCRIBER MANAGER
                   </p>
 
                   <div className="mx-auto mt-6 h-px w-16 bg-white/15" />
