@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
+import loginBg from '../assets/login-bg.png'
 
 export default function Login() {
   const { login } = useAuth()
@@ -22,8 +23,14 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
-      <div className="w-full max-w-sm">
+    <div
+      className="min-h-screen flex items-center justify-center px-4 bg-cover bg-center relative"
+      style={{ backgroundImage: `url(${loginBg})` }}
+    >
+      {/* Dark overlay so the busy background doesn't fight with the form */}
+      <div className="absolute inset-0 bg-black/50" />
+
+      <div className="w-full max-w-sm relative z-10">
         <div className="text-center mb-8">
           <div className="stamp inline-flex items-center justify-center w-14 h-14 text-ink-900 mb-4">
             <span className="font-display text-xl">R</span>
