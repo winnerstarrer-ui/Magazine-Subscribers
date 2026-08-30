@@ -105,7 +105,7 @@ export default function Dashboard() {
     setDeleteTarget(null)
   }
 
-  // 👇 NEW: Print Two-Column function (respects current filters)
+  // Print Two-Column function (respects current filters)
   const handlePrintTwoCol = () => {
     document.body.classList.add('printing-two-col')
     window.print()
@@ -115,7 +115,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex flex-col md:flex-row">
+    <div className="flex flex-col md:flex-row min-h-screen" style={{ background: '#f4f1e8' }}>
       {/* Hide Sidebar during print */}
       <div className="print-hide">
         <Sidebar />
@@ -123,14 +123,22 @@ export default function Dashboard() {
 
       <main className="flex-1 px-5 md:px-8 py-8 max-w-6xl mx-auto w-full">
         <header className="mb-6">
-          <h1 className="font-display text-3xl text-ink-900">Subscriber ledger</h1>
-          <p className="text-ink-700 text-sm mt-1">
+          <p
+            className="text-xs font-bold uppercase tracking-[0.22em] mb-1"
+            style={{ color: '#8c6f2d' }}
+          >
+            Islam Diary · Editorial workspace
+          </p>
+          <h1 className="text-3xl font-extrabold tracking-tight" style={{ color: '#10251d' }}>
+            Subscriber ledger
+          </h1>
+          <p className="text-slate-500 text-sm mt-1">
             Every receipt issued, filed by book, year and standing.
           </p>
         </header>
 
         {error && (
-          <div className="bg-oxblood/5 border border-oxblood/20 text-oxblood text-sm rounded-lg px-4 py-3 mb-6">
+          <div className="rounded-xl border border-red-200 bg-red-50 text-red-700 text-sm px-4 py-3 mb-6">
             {error}
           </div>
         )}
@@ -142,7 +150,6 @@ export default function Dashboard() {
           <StatCard label="Books in use" value={stats.books} tone="brass" />
         </div>
 
-        {/* 👇 Pass onPrint to Filters */}
         <Filters
           filters={filters}
           setFilters={setFilters}
@@ -154,11 +161,11 @@ export default function Dashboard() {
             setModalOpen(true)
           }}
           onExport={() => exportToCsv(filtered)}
-          onPrint={handlePrintTwoCol} // 👈 NEW PROP
+          onPrint={handlePrintTwoCol}
         />
 
         {loading ? (
-          <div className="bg-paper-card border border-line rounded-lg py-16 text-center text-ink-700/70">
+          <div className="bg-[#faf8f1] border border-slate-200 rounded-2xl py-16 text-center text-slate-400 shadow-sm">
             Loading records…
           </div>
         ) : (

@@ -7,7 +7,7 @@ export default function Filters({
   yearOptions,
   onAddNew,
   onExport,
-  onPrint,      // 👈 NEW: print function
+  onPrint,      // print function
   resultCount,
 }) {
   function update(key, value) {
@@ -21,11 +21,14 @@ export default function Filters({
   const hasActiveFilters =
     filters.book !== 'all' || filters.year !== 'all' || filters.status !== 'all' || filters.search
 
+  const inputClass =
+    'px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#0b6b48] focus:ring-4 focus:ring-[#0b6b48]/10'
+
   return (
-    <div className="bg-paper-card border border-line rounded-lg p-4 mb-5">
+    <div className="bg-[#faf8f1] border border-slate-200 rounded-2xl p-4 mb-5 shadow-sm">
       <div className="flex flex-wrap items-end gap-3">
         <div className="flex-1 min-w-[200px]">
-          <label className="block text-xs font-medium uppercase tracking-wide text-ink-700 mb-1">
+          <label className="block text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1">
             Search
           </label>
           <input
@@ -33,18 +36,18 @@ export default function Filters({
             value={filters.search}
             onChange={(e) => update('search', e.target.value)}
             placeholder="Name, phone or address…"
-            className="w-full px-3 py-2 rounded border border-line bg-white text-sm focus:outline-none focus:ring-2 focus:ring-brass"
+            className={`w-full ${inputClass}`}
           />
         </div>
 
         <div>
-          <label className="block text-xs font-medium uppercase tracking-wide text-ink-700 mb-1">
+          <label className="block text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1">
             Book No
           </label>
           <select
             value={filters.book}
             onChange={(e) => update('book', e.target.value)}
-            className="px-3 py-2 rounded border border-line bg-white text-sm focus:outline-none focus:ring-2 focus:ring-brass"
+            className={inputClass}
           >
             <option value="all">All books</option>
             {bookOptions.map((b) => (
@@ -56,13 +59,13 @@ export default function Filters({
         </div>
 
         <div>
-          <label className="block text-xs font-medium uppercase tracking-wide text-ink-700 mb-1">
+          <label className="block text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1">
             Year
           </label>
           <select
             value={filters.year}
             onChange={(e) => update('year', e.target.value)}
-            className="px-3 py-2 rounded border border-line bg-white text-sm focus:outline-none focus:ring-2 focus:ring-brass"
+            className={inputClass}
           >
             <option value="all">All years</option>
             {yearOptions.map((y) => (
@@ -74,13 +77,13 @@ export default function Filters({
         </div>
 
         <div>
-          <label className="block text-xs font-medium uppercase tracking-wide text-ink-700 mb-1">
+          <label className="block text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1">
             Status
           </label>
           <select
             value={filters.status}
             onChange={(e) => update('status', e.target.value)}
-            className="px-3 py-2 rounded border border-line bg-white text-sm focus:outline-none focus:ring-2 focus:ring-brass"
+            className={inputClass}
           >
             <option value="all">All</option>
             <option value="active">Active</option>
@@ -91,7 +94,7 @@ export default function Filters({
         {hasActiveFilters && (
           <button
             onClick={reset}
-            className="px-3 py-2 text-sm text-ink-700 hover:text-oxblood transition-colors"
+            className="px-3 py-2 text-sm text-slate-500 hover:text-red-600 transition-colors"
           >
             Clear filters
           </button>
@@ -99,30 +102,30 @@ export default function Filters({
 
         <div className="flex-1" />
 
-        {/* 👇 NEW: Print Two-Column button */}
         <button
           onClick={onPrint}
-          className="px-4 py-2 text-sm rounded border border-line bg-white hover:bg-ink-900/5 transition-colors flex items-center gap-1"
-          style={{ borderColor: '#8B5CF6', color: '#8B5CF6' }}
+          className="px-4 py-2 text-sm rounded-xl border transition-colors flex items-center gap-1.5 font-medium"
+          style={{ borderColor: '#d7b76a', color: '#8c6f2d', background: 'rgba(215,183,106,0.08)' }}
         >
           <i className="fas fa-columns"></i> Print (2‑col)
         </button>
 
         <button
           onClick={onExport}
-          className="px-4 py-2 text-sm rounded border border-line bg-white hover:bg-ink-900/5 transition-colors"
+          className="px-4 py-2 text-sm rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition-colors font-medium"
         >
           Export CSV
         </button>
         <button
           onClick={onAddNew}
-          className="px-4 py-2 text-sm rounded bg-ink-900 text-paper hover:bg-ink-700 transition-colors font-medium"
+          className="px-4 py-2 text-sm rounded-xl text-white font-bold shadow-lg shadow-[#0b5b3d]/20 transition-all hover:-translate-y-0.5"
+          style={{ background: '#0b5b3d' }}
         >
           + New receipt
         </button>
       </div>
 
-      <p className="text-xs text-ink-700/70 mt-3">
+      <p className="text-xs text-slate-400 mt-3">
         {resultCount} record{resultCount === 1 ? '' : 's'} matching
       </p>
     </div>
