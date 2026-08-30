@@ -137,9 +137,7 @@ export default function Login() {
                     இஸ்லாம் என்பது உன் ஆத்மா அமைதி பெறவும், பிறர் உன்மூலம் அமைதி பெறவும் உள்ளதாகும்.
                   </p>
 
-                  <p className="mx-auto mt-4 max-w-xs text-xs leading-5 text-white/60">
-                    SUBSCRIBER MANAGER
-                  </p>
+                 
 
                   <div className="mx-auto mt-6 h-px w-16 bg-white/15" />
 
