@@ -102,20 +102,54 @@ export default function Login() {
           {/* Login panel */}
           <section className="flex min-h-[650px] items-center justify-center bg-[#faf8f1]/95 px-6 py-10 sm:px-10">
             <div className="w-full max-w-md">
-              {/* Mobile brand */}
-              <div className="mb-9 text-center lg:hidden">
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0b5b3d] text-xl text-[#e6cf8a] shadow-lg">
-                  ☪
+              {/* Mobile brand — same content as the desktop panel, stacked into its own card */}
+              <div className="relative mb-8 overflow-hidden rounded-2xl p-7 text-center shadow-lg lg:hidden">
+                <div
+                  className="absolute inset-0"
+                  style={{ background: 'linear-gradient(135deg, #073c28 0%, #0b2b20 55%, #06140f 100%)' }}
+                />
+
+                <div className="relative z-10">
+                  <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-medium text-white backdrop-blur">
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#d7b76a] text-[10px] text-[#082419]">
+                      ★
+                    </span>
+                    <span>Islam Diary • Monthly Magazine</span>
+                  </div>
+
+                  <h1
+                    className="text-3xl font-extrabold leading-tight text-white"
+                    style={{ fontFamily: "'Noto Sans Tamil', 'Latha', sans-serif" }}
+                  >
+                    இஸ்லாம் டைரி
+                  </h1>
+
+                  <p className="mt-1 text-sm font-bold tracking-[0.18em] text-[#e6cf8a]">
+                    ISLAM DIARY
+                  </p>
+
+                  <div className="mx-auto mt-5 h-px w-16 bg-[#d7b76a]" />
+
+                  <p
+                    className="mx-auto mt-5 max-w-xs text-sm leading-7 text-white/85"
+                    style={{ fontFamily: "'Noto Sans Tamil', 'Latha', sans-serif" }}
+                  >
+                    இஸ்லாம் என்பது உன் ஆத்மா அமைதி பெறவும், பிறர் உன்மூலம் அமைதி பெறவும் உள்ளதாகும்.
+                  </p>
+
+                  <p className="mx-auto mt-4 max-w-xs text-xs leading-5 text-white/60">
+                    A calm, private workspace for managing your magazine subscriptions and editorial records.
+                  </p>
+
+                  <div className="mx-auto mt-6 h-px w-16 bg-white/15" />
+
+                  <p className="mt-5 text-[10px] uppercase tracking-[0.25em] text-white/40">
+                    Editor
+                  </p>
+                  <p className="mt-1.5 text-sm font-semibold text-white">
+                    S. Kaja Mohideen, B.Sc.
+                  </p>
                 </div>
-                <h1
-                  className="text-3xl font-extrabold text-[#092b20]"
-                  style={{ fontFamily: "'Noto Sans Tamil', 'Latha', sans-serif" }}
-                >
-                  இஸ்லாம் டைரி
-                </h1>
-                <p className="mt-1 text-sm font-bold tracking-[0.18em] text-[#8c6f2d]">
-                  ISLAM DIARY
-                </p>
               </div>
 
               <div className="mb-8">
