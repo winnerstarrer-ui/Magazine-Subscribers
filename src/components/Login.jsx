@@ -24,14 +24,22 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
+        {/* Brand Header */}
         <div className="text-center mb-8">
-          <div className="stamp inline-flex items-center justify-center w-14 h-14 text-ink-900 mb-4">
-            <span className="font-display text-xl">R</span>
+          <div className="stamp inline-flex items-center justify-center w-14 h-14 text-emerald-800 mb-4 bg-emerald-50 border border-emerald-800/20 rounded-full">
+            <svg className="w-8 h-8 fill-current" viewBox="0 0 24 24">
+              <path d="M12 2a1 1 0 0 1 1 1v1.055A9.001 9.001 0 0 1 21 13v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-7a9.001 9.001 0 0 1 8-8.945V3a1 1 0 0 1 1-1zm0 4a7 7 0 0 0-7 7v6h14v-6a7 7 0 0 0-7-7z" />
+            </svg>
           </div>
-          <h1 className="font-display text-3xl text-ink-900">The Register</h1>
-          <p className="text-ink-700 text-sm mt-1">Subscriber ledger — sign in to continue</p>
+          <h1 className="font-display text-3xl text-ink-900 font-bold">இஸ்லாம் டைரி</h1>
+          <h2 className="text-lg font-medium text-ink-800 mt-0.5">Islam Diary</h2>
+          <p className="text-ink-700 text-xs mt-2 italic">
+            "இஸ்லாம் என்பது உன் ஆத்மா அமைதி பெறவும், பிறர் உன்மூலம் அமைதி பெறவும் உள்ளதாகும்."
+          </p>
+          <p className="text-ink-700 text-xs font-medium mt-2">Subscriber ledger — sign in to continue</p>
         </div>
 
+        {/* Login Form */}
         <form
           onSubmit={handleSubmit}
           className="bg-paper-card border border-line rounded-lg p-6 shadow-sm"
@@ -76,7 +84,7 @@ export default function Login() {
         </form>
 
         <p className="text-center text-xs text-ink-700/70 mt-6">
-          Accounts are created by an administrator in the Firebase console.
+          Editor: S. Kaja Mohideen, B.Sc.
         </p>
       </div>
     </div>
