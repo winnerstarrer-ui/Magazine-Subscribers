@@ -82,11 +82,6 @@ export default function Login() {
                 இஸ்லாம் என்பது உன் ஆத்மா அமைதி பெறவும்,
                 பிறர் உன்மூலம் அமைதி பெறவும் உள்ளதாகும்.
               </p>
-
-              <p className="mt-5 max-w-md text-sm leading-6 text-white/65">
-                A calm, private workspace for managing your magazine
-                subscriptions and editorial records.
-              </p>
             </div>
 
             <div className="relative z-10 px-12 pb-10 xl:px-16">
@@ -136,8 +131,6 @@ export default function Login() {
                   >
                     இஸ்லாம் என்பது உன் ஆத்மா அமைதி பெறவும், பிறர் உன்மூலம் அமைதி பெறவும் உள்ளதாகும்.
                   </p>
-
-                 
 
                   <div className="mx-auto mt-6 h-px w-16 bg-white/15" />
 
