@@ -47,7 +47,22 @@ export default function Login() {
         }}
       />
 
-      <div className="relative z-10 flex min-h-screen items-center justify-center px-5 py-10 sm:px-8">
+      {/* Bismillah — sits above everything, visible on every screen size */}
+      <div className="absolute inset-x-0 top-0 z-20 pt-6 sm:pt-8 text-center px-4">
+        <p
+          className="mx-auto text-2xl sm:text-3xl leading-none"
+          style={{
+            fontFamily: "'Amiri', 'Scheherazade New', 'Traditional Arabic', serif",
+            color: '#e6cf8a',
+            textShadow: '0 2px 12px rgba(0,0,0,0.5)',
+          }}
+          dir="rtl"
+        >
+          بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+        </p>
+      </div>
+
+      <div className="relative z-10 flex min-h-screen items-center justify-center px-5 pt-20 pb-10 sm:px-8 sm:pt-24">
         <div className="grid w-full max-w-6xl overflow-hidden rounded-[28px] border border-white/20 bg-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.45)] backdrop-blur-md lg:grid-cols-[1.15fr_0.85fr]">
 
           {/* Brand panel */}
