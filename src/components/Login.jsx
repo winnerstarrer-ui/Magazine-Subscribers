@@ -53,7 +53,7 @@ export default function Login() {
           className="mx-auto text-2xl sm:text-3xl leading-none"
           style={{
             fontFamily: "'Amiri', 'Scheherazade New', 'Traditional Arabic', serif",
-            color: '#e6cf8a',
+            color: '#ffffff',
             textShadow: '0 2px 12px rgba(0,0,0,0.5)',
           }}
           dir="rtl"
