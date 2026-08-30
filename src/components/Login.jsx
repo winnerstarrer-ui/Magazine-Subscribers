@@ -23,14 +23,18 @@ export default function Login() {
   }
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center px-4 bg-cover bg-center relative"
-      style={{ backgroundImage: `url(${loginBg})` }}
-    >
-      {/* Dark overlay so the busy background doesn't fight with the form */}
-      <div className="absolute inset-0 bg-black/50" />
+    <div className="min-h-screen flex bg-paper">
+      {/* Image panel — confined to its own half, not fighting the form for attention */}
+      <div
+        className="hidden md:block md:w-1/2 lg:w-3/5 bg-cover bg-center relative"
+        style={{ backgroundImage: `url(${loginBg})` }}
+      >
+        <div className="absolute inset-0 bg-ink-900/20" />
+      </div>
 
-      <div className="w-full max-w-sm relative z-10">
+      {/* Form panel — clean, unchanged from the original design */}
+      <div className="w-full md:w-1/2 lg:w-2/5 flex items-center justify-center px-4">
+      <div className="w-full max-w-sm">
         <div className="text-center mb-8">
           <div className="stamp inline-flex items-center justify-center w-14 h-14 text-ink-900 mb-4">
             <span className="font-display text-xl">R</span>
@@ -85,6 +89,7 @@ export default function Login() {
         <p className="text-center text-xs text-ink-700/70 mt-6">
           Accounts are created by an administrator in the Firebase console.
         </p>
+      </div>
       </div>
     </div>
   )
